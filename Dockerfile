@@ -2,15 +2,13 @@ FROM rhel7
 
 MAINTAINER ky13 (kritchie@redhat.com)
 
-COPY epel-release-latest-7.noarch.rpm $HOME
+COPY epel-release-latest-7.noarch.rpm $HOME 
 
-COPY php-mbstring-5.4.16-36.1.el7_2.1.x86_64.rpm $HOME 
+COPY webtatic-release.rpm $HOME
 
-COPY php-fpm-5.4.16-36.1.el7_2.1.x86_64.rpm $HOME
+RUN rpm -ivh epel-release-latest-7.noarch.rpm && rpm -ivh webtatic-release.rpm
 
-RUN rpm -ivh epel-release-latest-7.noarch.rpm 
-
-RUN yum install -y wget systemd-sysv httpd mod_ssl mod_php tar git php-common php php-gd php-xml php-pear php-mysql mariadb-server mariadb && rpm -ivh php-mbstring-5.4.16-36.1.el7_2.1.x86_64.rpm && rpm -ivh php-fpm-5.4.16-36.1.el7_2.1.x86_64.rpm && yum clean all
+RUN yum install -y wget httpd mod_ssl tar git php55w php55w-opcache php55w-mbstring php55w-gd php55w-xml php55w-pear php55w-fpm php55w-mysql && yum clean all
 
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/httpd/conf.d/ssl.conf
