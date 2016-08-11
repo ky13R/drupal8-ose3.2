@@ -27,4 +27,4 @@ RUN cp -p /var/www/html/drupal/sites/default/default.settings.php /var/www/html/
 EXPOSE 8080
 EXPOSE 8443
 
-CMD mkdir /run/httpd; /usr/sbin/httpd -D FOREGROUND
+CMD /usr/sbin/httpd -D FOREGROUND
