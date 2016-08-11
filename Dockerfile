@@ -12,7 +12,7 @@ RUN yum install -y wget httpd mod_ssl mod_rewrite mariadb tar git php55w php55w-
 
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/httpd/conf.d/ssl.conf
-RUN sed -i 's/Allow Override none/Allow Override all/g' /etc/httpd/conf/httpd.conf
+RUN sed -i 's/Allowverride none/AllowOverride all/g' /etc/httpd/conf/httpd.conf
 
 RUN wget https://ftp.drupal.org/files/projects/drupal-8.1.7.tar.gz
 
