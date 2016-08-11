@@ -8,7 +8,7 @@ COPY webtatic-release.rpm $HOME
 
 RUN rpm -ivh epel-release-latest-7.noarch.rpm && rpm -ivh webtatic-release.rpm
 
-RUN yum install -y wget httpd mod_ssl tar git php55w php55w-opcache php55w-mbstring php55w-gd php55w-xml php55w-pear php55w-fpm php55w-mysql && yum clean all
+RUN yum install -y wget httpd mod_ssl mod_rewrite mariadb tar git php55w php55w-opcache php55w-mbstring php55w-gd php55w-xml php55w-pear php55w-fpm php55w-mysql && yum clean all
 
 RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/Listen 443/Listen 8443/g' /etc/httpd/conf.d/ssl.conf
