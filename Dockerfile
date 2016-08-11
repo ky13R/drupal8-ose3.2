@@ -1,4 +1,4 @@
-FROM 172.30.61.218:5000/openshift/rhel7
+FROM rhel7
 
 MAINTAINER ky13 (kritchie@redhat.com)
 
